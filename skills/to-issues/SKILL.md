@@ -49,7 +49,11 @@ Iterate until the user approves the breakdown.
 
 ### 5. Write issues to local files
 
-For each approved slice, create a markdown file at `docs/issues/<NNN>-<kebab-case-title>.md` (zero-padded 3-digit index, starting at 001). Create the `docs/issues/` directory if it does not exist.
+For each approved slice, create:
+- A markdown file at `docs/issues/<NNN>-<kebab-case-title>.md` (zero-padded 3-digit index, starting at 001)
+- A JSON file at `.agents/tasks/prd-<feature-name>.json` containing all issues in Ralph-compatible format
+
+Create the `docs/issues/` and `.agents/tasks/` directories if they do not exist.
 
 Write files in dependency order (blockers first) so you can reference real file names in the "Blocked by" field.
 
@@ -57,6 +61,10 @@ Write files in dependency order (blockers first) so you can reference real file 
 ## Parent
 
 A reference to the parent issue on the issue tracker (if the source was an existing issue, otherwise omit this section).
+
+## State
+
+Current status of this issue: Open / In Progress / Completed / Blocked
 
 ## What to build
 
@@ -77,3 +85,23 @@ Avoid specific file paths or code snippets — they go stale fast. Exception: if
 Or "None - can start immediately" if no blockers.
 
 </issue-template>
+
+<ralph-json-template>
+{
+  "userStories": [
+    {
+      "id": "001",
+      "title": "Short descriptive name",
+      "description": "Concise description of this vertical slice",
+      "status": "open",
+      "markdownFile": "docs/issues/001-short-descriptive-name.md",
+      "acceptanceCriteria": [
+        "Criterion 1",
+        "Criterion 2",
+        "Criterion 3"
+      ],
+      "blockedBy": []
+    }
+  ]
+}
+</ralph-json-template>
