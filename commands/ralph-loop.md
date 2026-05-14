@@ -98,7 +98,19 @@ git commit --amend --no-edit
 
 ---
 
-## Step 6 — Repeat
+## Step 6 — Clean up worktrees
+
+After updating the status for all issues in the wave, remove the worktrees created for the agents in this wave:
+
+```
+git worktree remove <worktree-path>
+```
+
+Replace `<worktree-path>` with the actual path of each worktree used by the agents in the current wave.
+
+---
+
+## Step 7 — Repeat
 
 Return to **Step 2** and compute the next ready wave. Continue until no open issues remain.
 
